@@ -1,3 +1,4 @@
+// 获取数据，携带信息
 const axios = require('axios')
 const config = require('../config')
 

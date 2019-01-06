@@ -23,7 +23,9 @@ app.use(logger('dev'))
 app.engine('html', artTemplate);
 app.set('view engine','html')
 app.set('view options', {
-    // debug启动模板引擎调试模式。如果为 true: {cache:false, minimize:false, compileDebug:true}
+    // debug启动模板引擎调试模式。
+    // 如果为 true: {cache:false, minimize:false, compileDebug:true}
+    // 开发环境: 不缓存,不压缩,编译调试版
     //  // 是否开启缓存
     // cache: true,
     // // 是否开启压缩。它会运行 htmlMinifier，将页面 HTML、CSS、CSS 进行压缩输出
