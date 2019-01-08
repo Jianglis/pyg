@@ -8,5 +8,8 @@ exports.getLike = () => {
 
 exports.getCateProducts = (cateId,page,size,sort) => {
 	const url = `categories/${cateId}/products?page=${page}&per_page=${size}&sort=${sort}`
-	return axios.get(url).then(res=>( {list:res.data,totalPage:res.headers['X-Total-Pages']})).catch(err=> Promise.reject(err))
+	return axios.get(url).then(res=>( {
+		list:res.data,
+		totalPage:res.headers['x-total-pages']
+	})).catch(err=> Promise.reject(err))
 }
