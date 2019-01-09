@@ -13,3 +13,16 @@ module.exports.api = {
     username: 'newshop-frontend',
     password: 'd8667837fce5a0270a35f4a8fa14be479fadc774'
 }
+
+module.exports.mysqlOptions = {
+	host: 'localhost',
+	port: 3306,
+	user: 'root',
+	password: '',
+	database: 'newshop'
+}
+
+module.exports.cookie = {
+    cart_key: 'pyg_cart_key',
+    cart_expires: 30 * 24 * 60 * 60 * 1000
+}

@@ -164,7 +164,7 @@ em {
   width: 50px;
   height: 35px;
   border: 1px solid #ddd;
-  border-right: 0;
+  /* border-right: 0; */
   color: #555;
   text-align: center;
   line-height: 42px;

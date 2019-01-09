@@ -10,6 +10,13 @@ const favicon = require('express-favicon')
 const logger = require('morgan')
 const router = require('./router')
 const middleware = require('./middleware')
+const config = require('./config')
+const cookieParser = require('cookie-parser')
+
+const session = require('express-session')
+const MySQLStore = require('express-mysql-session')(session)
+
+const sessionStore = new MySQLStore(config.mysqlOptions)
 
 const app = express()
 
@@ -47,6 +54,18 @@ app.use(bodyParser.urlencoded({extended:false}))
 //网站小图标
 app.use(favicon(path.join(__dirname,'./favicon.ico')))
 
+
+// session中间件
+app.use(session({
+	key: 'PYGSID',
+	secret: 'pyg_secret',
+	store: sessionStore,
+	resave: false,
+	saveUninitialized: false
+}))
+
+// cookie中间件
+app.use(cookieParser())
 //自定义中间件
 app.use(middleware.global)
 

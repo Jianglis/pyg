@@ -169,6 +169,8 @@ a.increment {
 
 .sum-btn:hover {
 	background: #bf3a3c;
+	text-decoration: none;
+	color: #fff;
 }
 
 .del {
