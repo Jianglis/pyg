@@ -4,6 +4,10 @@ const home = require('./controllers/home')
 const account = require('./controllers/account')
 const product = require('./controllers/product')
 const cart = require('./controllers/cart')
+const member = require('./controllers/member')
+const order = require('./controllers/order')
+const {checkLogin} = require('./middleware')
+const pay = require('./controllers/pay')
 
 const router = module.exports =  express.Router()
 
@@ -24,9 +28,21 @@ router.get('/item/:id',product.item)
 router.get('/cart',cart.index)
 router.get('/cart/find',cart.find)
 router.get('/cart/add',cart.add)
+router.get('/cart/success',cart.addScu)
 router.post('/cart/edit',cart.edit)
 router.post('/cart/remove',cart.remove)
 
 
 //用户登录
-router.get('/login',account.login)
+router.get('/login',account.index)
+router.post('/login',account.login)
+router.get('/logout',account.logout)
+
+//个人相关
+router.get('/member',checkLogin,member.index)
+router.get('/order',checkLogin,order.index)
+router.get('/order/create',checkLogin,order.create)
+router.get('/order/checkout',checkLogin,order.checkout)
+
+router.get('/pay',checkLogin,pay.index)
+router.get('/pay/callback',checkLogin,pay.callback)

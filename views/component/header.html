@@ -6,18 +6,23 @@
           <div class="shortcut">
             <ul class="fl">
               <li class="f-item">品优购欢迎您！</li>
-              <li class="f-item">请
+              <li class="f-item">
+                {{if user}}
+                【<a href="/member">{{user.username}}</a>】
+                <a href="/logout">退出</a>
+                {{else}}
                 <a href="/login">登录</a>
-                <a href="register.html">免费注册</a>
+                <a href="/register">免费注册</a>
+                {{/if}}
               </li>
             </ul>
             <ul class="fr">
               <li class="f-item">
-                <a href="member-order.html">我的订单</a>
+                <a href="/order">我的订单</a>
               </li>
               <li class="f-item space"></li>
               <li class="f-item">
-                <a href="member.html">我的品优购</a>
+                <a href="/member">我的品优购</a>
               </li>
               <li class="f-item space"></li>
               <li class="f-item">关注品优购</li>
@@ -62,9 +67,20 @@
                   <span class="car"></span>
                   <a class="sui-btn btn-default btn-xlarge" href="/cart">
                     <span>我的购物车</span>
-                    <i class="shopnum">0</i>
+                    <!-- {{headerCart}} -->
+                    <i class="shopnum">{{headerCart.amount}}</i>
                   </a>
-                  <div class="clearfix shopcarlist"></div>
+                  <div class="clearfix shopcarlist">
+                    <ul>
+                      {{if headerCart.list.length}}
+                      {{each headerCart.list}}
+                      <li>{{$value}}</li>
+                      {{/each}}
+                      {{else}}
+                      <li>购物车空空如也...</li>
+                      {{/if}}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
